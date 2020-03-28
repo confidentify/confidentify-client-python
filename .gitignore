@@ -1,11 +1,11 @@
 .vscode/
 __pycache__/
 dist/
+build/
 *.pyc
 .eggs/
 *.egg-info/
 *.dist-info/
-confidentify_client/
 .openapi-generator/
 .openapi-generator-ignore
 confidentify_client_README.md
