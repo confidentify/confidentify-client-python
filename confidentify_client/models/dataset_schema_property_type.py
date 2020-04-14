@@ -37,8 +37,11 @@ class DatasetSchemaPropertyType(object):
     COUNTRY = "country"
     BIRTH_DATE = "birth_date"
     NATIONAL_ID = "national_id"
+    META_RECORD_SOURCE = "meta_record_source"
+    META_EXTERNAL_ID = "meta_external_id"
+    META_RECORD_GROUP = "meta_record_group"
 
-    allowable_values = [STRING, INTEGER, ARRAY, PERSON_NAME, EMAIL, PHONE, COUNTRY, BIRTH_DATE, NATIONAL_ID]  # noqa: E501
+    allowable_values = [STRING, INTEGER, ARRAY, PERSON_NAME, EMAIL, PHONE, COUNTRY, BIRTH_DATE, NATIONAL_ID, META_RECORD_SOURCE, META_EXTERNAL_ID, META_RECORD_GROUP]  # noqa: E501
 
     """
     Attributes:

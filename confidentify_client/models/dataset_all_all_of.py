@@ -33,45 +33,101 @@ class DatasetAllAllOf(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'schema': 'DatasetSchema'
+        'stats': 'DatasetStats',
+        'created_at': 'datetime',
+        'created_by': 'str'
     }
 
     attribute_map = {
-        'schema': 'schema'
+        'stats': 'stats',
+        'created_at': 'created_at',
+        'created_by': 'created_by'
     }
 
-    def __init__(self, schema=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, stats=None, created_at=None, created_by=None, local_vars_configuration=None):  # noqa: E501
         """DatasetAllAllOf - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._schema = None
+        self._stats = None
+        self._created_at = None
+        self._created_by = None
         self.discriminator = None
 
-        if schema is not None:
-            self.schema = schema
+        if stats is not None:
+            self.stats = stats
+        if created_at is not None:
+            self.created_at = created_at
+        if created_by is not None:
+            self.created_by = created_by
 
     @property
-    def schema(self):
-        """Gets the schema of this DatasetAllAllOf.  # noqa: E501
+    def stats(self):
+        """Gets the stats of this DatasetAllAllOf.  # noqa: E501
 
 
-        :return: The schema of this DatasetAllAllOf.  # noqa: E501
-        :rtype: DatasetSchema
+        :return: The stats of this DatasetAllAllOf.  # noqa: E501
+        :rtype: DatasetStats
         """
-        return self._schema
+        return self._stats
 
-    @schema.setter
-    def schema(self, schema):
-        """Sets the schema of this DatasetAllAllOf.
+    @stats.setter
+    def stats(self, stats):
+        """Sets the stats of this DatasetAllAllOf.
 
 
-        :param schema: The schema of this DatasetAllAllOf.  # noqa: E501
-        :type: DatasetSchema
+        :param stats: The stats of this DatasetAllAllOf.  # noqa: E501
+        :type: DatasetStats
         """
 
-        self._schema = schema
+        self._stats = stats
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this DatasetAllAllOf.  # noqa: E501
+
+        The time of creation of the dataset  # noqa: E501
+
+        :return: The created_at of this DatasetAllAllOf.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this DatasetAllAllOf.
+
+        The time of creation of the dataset  # noqa: E501
+
+        :param created_at: The created_at of this DatasetAllAllOf.  # noqa: E501
+        :type: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def created_by(self):
+        """Gets the created_by of this DatasetAllAllOf.  # noqa: E501
+
+        The username of the user who created the dataset  # noqa: E501
+
+        :return: The created_by of this DatasetAllAllOf.  # noqa: E501
+        :rtype: str
+        """
+        return self._created_by
+
+    @created_by.setter
+    def created_by(self, created_by):
+        """Sets the created_by of this DatasetAllAllOf.
+
+        The username of the user who created the dataset  # noqa: E501
+
+        :param created_by: The created_by of this DatasetAllAllOf.  # noqa: E501
+        :type: str
+        """
+
+        self._created_by = created_by
 
     def to_dict(self):
         """Returns the model properties as a dict"""

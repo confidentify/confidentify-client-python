@@ -452,6 +452,242 @@ class DatasetsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def ingest_documents_post(self, id, ingest_documents_request, **kwargs):  # noqa: E501
+        """Initiate ingestion of data from a list of documents.  # noqa: E501
+
+        Using this endpoint you can initiate data ingestion based on text documents.  Each document will be processed using the `identify` service and the resolved/identified entities will then be added to the dataset as records.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.ingest_documents_post(id, ingest_documents_request, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: (required)
+        :param IngestDocumentsRequest ingest_documents_request: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.ingest_documents_post_with_http_info(id, ingest_documents_request, **kwargs)  # noqa: E501
+
+    def ingest_documents_post_with_http_info(self, id, ingest_documents_request, **kwargs):  # noqa: E501
+        """Initiate ingestion of data from a list of documents.  # noqa: E501
+
+        Using this endpoint you can initiate data ingestion based on text documents.  Each document will be processed using the `identify` service and the resolved/identified entities will then be added to the dataset as records.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.ingest_documents_post_with_http_info(id, ingest_documents_request, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: (required)
+        :param IngestDocumentsRequest ingest_documents_request: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['id', 'ingest_documents_request']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method ingest_documents_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `ingest_documents_post`")  # noqa: E501
+        # verify the required parameter 'ingest_documents_request' is set
+        if self.api_client.client_side_validation and ('ingest_documents_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['ingest_documents_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `ingest_documents_request` when calling `ingest_documents_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ingest_documents_request' in local_var_params:
+            body_params = local_var_params['ingest_documents_request']
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth', 'oAuth2ClientCredentials']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/datasets/{id}/ingest_documents', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def ingest_file_post(self, id, ingest_file_request, **kwargs):  # noqa: E501
+        """Initiate ingestion of data from file upload.  # noqa: E501
+
+        Using this endpoint you can initiate data ingestion based on file upload. This endpoint does not accept the actual file for processing, but will validate the request and provide a presigned URL with which the client can continue.  The uploaded file will be handled according to the `file_type` provided in the request.  In the response of this request, a upload file URL will be provided. The client is expected to `PUT` the file contents towards this URL. Once the file has been uploaded, it will be handled asynchronously.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.ingest_file_post(id, ingest_file_request, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: (required)
+        :param IngestFileRequest ingest_file_request: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: IngestFileResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.ingest_file_post_with_http_info(id, ingest_file_request, **kwargs)  # noqa: E501
+
+    def ingest_file_post_with_http_info(self, id, ingest_file_request, **kwargs):  # noqa: E501
+        """Initiate ingestion of data from file upload.  # noqa: E501
+
+        Using this endpoint you can initiate data ingestion based on file upload. This endpoint does not accept the actual file for processing, but will validate the request and provide a presigned URL with which the client can continue.  The uploaded file will be handled according to the `file_type` provided in the request.  In the response of this request, a upload file URL will be provided. The client is expected to `PUT` the file contents towards this URL. Once the file has been uploaded, it will be handled asynchronously.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.ingest_file_post_with_http_info(id, ingest_file_request, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: (required)
+        :param IngestFileRequest ingest_file_request: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(IngestFileResponse, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['id', 'ingest_file_request']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method ingest_file_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `ingest_file_post`")  # noqa: E501
+        # verify the required parameter 'ingest_file_request' is set
+        if self.api_client.client_side_validation and ('ingest_file_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['ingest_file_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `ingest_file_request` when calling `ingest_file_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ingest_file_request' in local_var_params:
+            body_params = local_var_params['ingest_file_request']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth', 'oAuth2ClientCredentials']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/datasets/{id}/ingest_file', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='IngestFileResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def records_post(self, id, records_upload_request, **kwargs):  # noqa: E501
         """Upload records  # noqa: E501
 

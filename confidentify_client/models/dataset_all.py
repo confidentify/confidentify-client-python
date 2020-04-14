@@ -37,7 +37,9 @@ class DatasetAll(object):
         'schema': 'DatasetSchema',
         'id': 'str',
         'href': 'str',
-        'stats': 'DatasetStats'
+        'stats': 'DatasetStats',
+        'created_at': 'datetime',
+        'created_by': 'str'
     }
 
     attribute_map = {
@@ -45,10 +47,12 @@ class DatasetAll(object):
         'schema': 'schema',
         'id': 'id',
         'href': 'href',
-        'stats': 'stats'
+        'stats': 'stats',
+        'created_at': 'created_at',
+        'created_by': 'created_by'
     }
 
-    def __init__(self, name=None, schema=None, id=None, href=None, stats=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, schema=None, id=None, href=None, stats=None, created_at=None, created_by=None, local_vars_configuration=None):  # noqa: E501
         """DatasetAll - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +63,8 @@ class DatasetAll(object):
         self._id = None
         self._href = None
         self._stats = None
+        self._created_at = None
+        self._created_by = None
         self.discriminator = None
 
         if name is not None:
@@ -71,6 +77,10 @@ class DatasetAll(object):
             self.href = href
         if stats is not None:
             self.stats = stats
+        if created_at is not None:
+            self.created_at = created_at
+        if created_by is not None:
+            self.created_by = created_by
 
     @property
     def name(self):
@@ -182,6 +192,52 @@ class DatasetAll(object):
         """
 
         self._stats = stats
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this DatasetAll.  # noqa: E501
+
+        The time of creation of the dataset  # noqa: E501
+
+        :return: The created_at of this DatasetAll.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this DatasetAll.
+
+        The time of creation of the dataset  # noqa: E501
+
+        :param created_at: The created_at of this DatasetAll.  # noqa: E501
+        :type: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def created_by(self):
+        """Gets the created_by of this DatasetAll.  # noqa: E501
+
+        The username of the user who created the dataset  # noqa: E501
+
+        :return: The created_by of this DatasetAll.  # noqa: E501
+        :rtype: str
+        """
+        return self._created_by
+
+    @created_by.setter
+    def created_by(self, created_by):
+        """Sets the created_by of this DatasetAll.
+
+        The username of the user who created the dataset  # noqa: E501
+
+        :param created_by: The created_by of this DatasetAll.  # noqa: E501
+        :type: str
+        """
+
+        self._created_by = created_by
 
     def to_dict(self):
         """Returns the model properties as a dict"""

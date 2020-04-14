@@ -36,19 +36,17 @@ class DatasetListItem(object):
         'name': 'str',
         'schema': 'DatasetSchema',
         'id': 'str',
-        'href': 'str',
-        'stats': 'DatasetStats'
+        'href': 'str'
     }
 
     attribute_map = {
         'name': 'name',
         'schema': 'schema',
         'id': 'id',
-        'href': 'href',
-        'stats': 'stats'
+        'href': 'href'
     }
 
-    def __init__(self, name=None, schema=None, id=None, href=None, stats=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, schema=None, id=None, href=None, local_vars_configuration=None):  # noqa: E501
         """DatasetListItem - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -58,7 +56,6 @@ class DatasetListItem(object):
         self._schema = None
         self._id = None
         self._href = None
-        self._stats = None
         self.discriminator = None
 
         if name is not None:
@@ -69,8 +66,6 @@ class DatasetListItem(object):
             self.id = id
         if href is not None:
             self.href = href
-        if stats is not None:
-            self.stats = stats
 
     @property
     def name(self):
@@ -161,27 +156,6 @@ class DatasetListItem(object):
         """
 
         self._href = href
-
-    @property
-    def stats(self):
-        """Gets the stats of this DatasetListItem.  # noqa: E501
-
-
-        :return: The stats of this DatasetListItem.  # noqa: E501
-        :rtype: DatasetStats
-        """
-        return self._stats
-
-    @stats.setter
-    def stats(self, stats):
-        """Sets the stats of this DatasetListItem.
-
-
-        :param stats: The stats of this DatasetListItem.  # noqa: E501
-        :type: DatasetStats
-        """
-
-        self._stats = stats
 
     def to_dict(self):
         """Returns the model properties as a dict"""

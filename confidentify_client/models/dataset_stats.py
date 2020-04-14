@@ -33,35 +33,147 @@ class DatasetStats(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'files_received': 'int',
+        'files_processed': 'int',
+        'documents_received': 'int',
+        'documents_processed': 'int',
         'records_inserted': 'int',
         'records_indexed': 'int'
     }
 
     attribute_map = {
+        'files_received': 'files_received',
+        'files_processed': 'files_processed',
+        'documents_received': 'documents_received',
+        'documents_processed': 'documents_processed',
         'records_inserted': 'records_inserted',
         'records_indexed': 'records_indexed'
     }
 
-    def __init__(self, records_inserted=None, records_indexed=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, files_received=None, files_processed=None, documents_received=None, documents_processed=None, records_inserted=None, records_indexed=None, local_vars_configuration=None):  # noqa: E501
         """DatasetStats - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._files_received = None
+        self._files_processed = None
+        self._documents_received = None
+        self._documents_processed = None
         self._records_inserted = None
         self._records_indexed = None
         self.discriminator = None
 
+        if files_received is not None:
+            self.files_received = files_received
+        if files_processed is not None:
+            self.files_processed = files_processed
+        if documents_received is not None:
+            self.documents_received = documents_received
+        if documents_processed is not None:
+            self.documents_processed = documents_processed
         if records_inserted is not None:
             self.records_inserted = records_inserted
         if records_indexed is not None:
             self.records_indexed = records_indexed
 
     @property
+    def files_received(self):
+        """Gets the files_received of this DatasetStats.  # noqa: E501
+
+        The amount of files uploaded and received for which processing has started.  # noqa: E501
+
+        :return: The files_received of this DatasetStats.  # noqa: E501
+        :rtype: int
+        """
+        return self._files_received
+
+    @files_received.setter
+    def files_received(self, files_received):
+        """Sets the files_received of this DatasetStats.
+
+        The amount of files uploaded and received for which processing has started.  # noqa: E501
+
+        :param files_received: The files_received of this DatasetStats.  # noqa: E501
+        :type: int
+        """
+
+        self._files_received = files_received
+
+    @property
+    def files_processed(self):
+        """Gets the files_processed of this DatasetStats.  # noqa: E501
+
+        The amount of files uploaded that has been fully processed.  Note that there may be a delay between submitting files and having them processed. If this number is less than `files_received`, it means that files are currently queued for processing.   # noqa: E501
+
+        :return: The files_processed of this DatasetStats.  # noqa: E501
+        :rtype: int
+        """
+        return self._files_processed
+
+    @files_processed.setter
+    def files_processed(self, files_processed):
+        """Sets the files_processed of this DatasetStats.
+
+        The amount of files uploaded that has been fully processed.  Note that there may be a delay between submitting files and having them processed. If this number is less than `files_received`, it means that files are currently queued for processing.   # noqa: E501
+
+        :param files_processed: The files_processed of this DatasetStats.  # noqa: E501
+        :type: int
+        """
+
+        self._files_processed = files_processed
+
+    @property
+    def documents_received(self):
+        """Gets the documents_received of this DatasetStats.  # noqa: E501
+
+        The amount of documents that have been received for which processing has started.  # noqa: E501
+
+        :return: The documents_received of this DatasetStats.  # noqa: E501
+        :rtype: int
+        """
+        return self._documents_received
+
+    @documents_received.setter
+    def documents_received(self, documents_received):
+        """Sets the documents_received of this DatasetStats.
+
+        The amount of documents that have been received for which processing has started.  # noqa: E501
+
+        :param documents_received: The documents_received of this DatasetStats.  # noqa: E501
+        :type: int
+        """
+
+        self._documents_received = documents_received
+
+    @property
+    def documents_processed(self):
+        """Gets the documents_processed of this DatasetStats.  # noqa: E501
+
+        The amount of documents that has been fully processed.  Note that there may be a delay between submitting documents and having them processed. If this number is less than `documents_received`, it means that documents are currently queued for processing.   # noqa: E501
+
+        :return: The documents_processed of this DatasetStats.  # noqa: E501
+        :rtype: int
+        """
+        return self._documents_processed
+
+    @documents_processed.setter
+    def documents_processed(self, documents_processed):
+        """Sets the documents_processed of this DatasetStats.
+
+        The amount of documents that has been fully processed.  Note that there may be a delay between submitting documents and having them processed. If this number is less than `documents_received`, it means that documents are currently queued for processing.   # noqa: E501
+
+        :param documents_processed: The documents_processed of this DatasetStats.  # noqa: E501
+        :type: int
+        """
+
+        self._documents_processed = documents_processed
+
+    @property
     def records_inserted(self):
         """Gets the records_inserted of this DatasetStats.  # noqa: E501
 
-        The amount of records that have been inserted to the dataset.  # noqa: E501
+        The amount of records that have been inserted into the dataset.   # noqa: E501
 
         :return: The records_inserted of this DatasetStats.  # noqa: E501
         :rtype: int
@@ -72,7 +184,7 @@ class DatasetStats(object):
     def records_inserted(self, records_inserted):
         """Sets the records_inserted of this DatasetStats.
 
-        The amount of records that have been inserted to the dataset.  # noqa: E501
+        The amount of records that have been inserted into the dataset.   # noqa: E501
 
         :param records_inserted: The records_inserted of this DatasetStats.  # noqa: E501
         :type: int
@@ -84,7 +196,7 @@ class DatasetStats(object):
     def records_indexed(self):
         """Gets the records_indexed of this DatasetStats.  # noqa: E501
 
-        The amount of records that have been indexed for matching. Note that there may be a delay between uploading records and having them indexed.   # noqa: E501
+        The amount of records that have been indexed for matching.  Note that there may be a delay between submitting records and having them indexed. If this number is less than `records_inserted`, it means that records are currently queued for indexing.   # noqa: E501
 
         :return: The records_indexed of this DatasetStats.  # noqa: E501
         :rtype: int
@@ -95,7 +207,7 @@ class DatasetStats(object):
     def records_indexed(self, records_indexed):
         """Sets the records_indexed of this DatasetStats.
 
-        The amount of records that have been indexed for matching. Note that there may be a delay between uploading records and having them indexed.   # noqa: E501
+        The amount of records that have been indexed for matching.  Note that there may be a delay between submitting records and having them indexed. If this number is less than `records_inserted`, it means that records are currently queued for indexing.   # noqa: E501
 
         :param records_indexed: The records_indexed of this DatasetStats.  # noqa: E501
         :type: int
