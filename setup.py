@@ -1,7 +1,7 @@
 from setuptools import setup
 
 NAME = "confidentify-client-python"
-VERSION = "1.3.0"
+VERSION = "1.5.0"
 REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 
 setup(
